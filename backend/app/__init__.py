@@ -1,4 +1,5 @@
 import logging
+import os
 
 from flask import Flask
 from flask_cors import CORS
@@ -34,6 +35,8 @@ def create_tables(app: Flask) -> None:
 
 
 def create_app() -> Flask:
+    os.makedirs("instance", exist_ok=True)
+
     app: Flask = Flask(__name__)
     app.config.from_object("config.Config")
 
